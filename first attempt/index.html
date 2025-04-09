@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Setting the viewport helps ensure responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Modal</title>
+    <!-- Linking the external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Button to open the modal -->
+    <button class="open-modal-btn">Give Feedback</button>
+
+    <!-- Modal overlay that darkens the background and holds the modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <!-- Resize button in the top-right for toggling modal size -->
+        <button id="resizeBtn" class="resize-btn" title="Toggle fullscreen">
+            <!-- Default resize icon (Normal state icon) -->
+            <svg width="24" height="24" viewBox="0 0 24 24">
+                <!-- SVG path for resize icon -->
+                <path fill="currentColor" 
+                      d="M4,4 L10,4 L10,6 L6,6 L6,10 L4,10 Z
+                         M14,4 L20,4 L20,10 L18,10 L18,6 L14,6 Z
+                         M4,14 L6,14 L6,18 L10,18 L10,20 L4,20 Z
+                         M14,20 L14,18 L18,18 L18,14 L20,14 L20,20 Z"/>
+            </svg>
+        </button>
+
+        <!-- Zoom button in the bottom-right corner -->
+        <button id="zoomBtn" class="zoom-btn" title="Zoom in">
+            <!-- Default zoom in icon as SVG -->
+            <svg width="24" height="24" viewBox="0 0 24 24">
+                <!-- Circle with plus sign for zoom in -->
+                <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="10" y1="7" x2="10" y2="13" stroke="currentColor" stroke-width="2"/>
+                <line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="2"/>
+            </svg>
+        </button>
+
+        <!-- Close icon to dismiss the modal -->
+        <span class="close-icon" onclick="closeModal()">&times;</span>
+
+        <!-- Container to center and contain the modal dialog -->
+        <div class="container">
+            <!-- Main modal element that displays the feedback content -->
+            <div class="modal" id="feedbackModal">
+                <!-- Modal header/question -->
+                <h2>How likely are you to recommend FrontendPro to someone you know?</h2>
+                <!-- Section for rating numbers inserted dynamically -->
+                <div class="rating-scale" id="ratingScale">
+                    <!-- Rating numbers will be dynamically created by JavaScript -->
+                </div>
+                <!-- Feedback labels below rating scale -->
+                <div class="feedback-labels">
+                    <span>Not likely at all</span>
+                    <span>Extremely likely</span>
+                </div>
+                <!-- Buttons for canceling or submitting the feedback -->
+                <div class="modal-actions">
+                    <button class="c" onclick="closeModal()">Cancel</button>
+                    <button class="submit-btn" onclick="submitFeedback()">Submit</button>
+                </div>
+            </div><!-- End of modal -->
+        </div><!-- End of container -->
+    </div><!-- End of modal-overlay -->
+
+    <!-- Linking the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>

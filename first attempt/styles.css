@@ -1,0 +1,269 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  body {
+    background-color: #d6c8f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .rating-scale {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .rating-number {
+    width: 40px;
+    height: 40px;
+    background-color: #2c2345;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .rating-number:hover,
+  .rating-number.selected {
+    background-color: #6c47ff; /* Change to your desired hover color */
+    color: white; /* Change to your desired hover text color */
+    transform: scale(1.1);
+}
+  .open-modal-btn {
+    background-color: #6c47ff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width:70vw;
+    height: 70vh;
+    margin-bottom: none;
+    padding: 20px;
+    background-color: #d0ced6;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: white;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  /* ------------------ Modal Default Styles ------------------ */
+  .modal {
+    /* Background color for the modal */
+    background-color: #1e1631;
+    /* Text color inside the modal */
+    color: white;
+    /* Padding inside the modal */
+    padding: 30px;
+    /* Modal takes 90% of its parent width, with a maximum of 600px */
+    width: 90%;
+    max-width: 600px;
+    /* Adds a soft shadow to give depth */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    /* Relative positioning so that child elements can be absolutely positioned */
+    position: relative;
+    /* Hide any content that might extend beyond the modal boundaries */
+    overflow: hidden; /* Prevents content from flowing out */
+    /* Smooth transition for all properties that change */
+    transition: all 0.3s ease;
+  }
+
+  /* ------------------ Fullscreen Modal State ------------------ */
+  .modal.fullscreen {
+    /* Expanded modal width using viewport units */
+    width: 90vw;
+    /* Expanded modal height using viewport units */
+    height: 90vh;
+    /* Removes the max-width constraint */
+    max-width: none;
+    /* Center the modal vertically and horizontally */
+    margin: auto;
+    /* Removes rounded corners in fullscreen mode */
+    border-radius: 0;
+    /* Removes shadow effect for a flat design */
+    box-shadow: none;
+    /* Fix the modal so it stays in place during scrolling */
+    position: fixed;
+    /* 5% of the viewport height from the top */
+    top: 5vh;
+    /* 5% of the viewport width from the left */
+    left: 5vw;
+    /* Padding remains the same as default */
+    padding: 30px;
+    /* Allow overflow of content with scrolling */
+    overflow: auto;
+    /* High z-index to ensure it appears on top of other elements */
+    z-index: 2000;
+  }
+
+  /* ------------------ Small Modal State ------------------ */
+  .modal.small {
+    /* Reduced modal width as a percentage of the viewport */
+    width: 50vw;
+    /* Height automatically adjusts based on content */
+    height: auto;
+    /* Center the modal with margin on top and bottom */
+    margin: 50px auto;
+    /* Rounded corners for the small state */
+    border-radius: 10px;
+    /* Reapply the soft shadow for depth */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ------------------ Responsive Adjustments ------------------ */
+  /* For viewports less than or equal to 600px wide */
+  @media (max-width: 600px) {
+    .modal.small {
+        /* Increase modal width for smaller screens for better readability */
+        width: 70vw;
+    }
+  }
+
+  .modal h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    width: 100%; /* Adjusts to modal width */
+
+  }
+
+  .rating-scale {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+  }
+
+  .rating-number {
+    width: 40px;
+    height: 40px;
+    background-color: #2c2345;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .rating-number:hover,
+  .rating-number.selected {
+    background-color:  #2c2345;
+    color: white;
+    transform: scale(1.1);
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .feedback-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 0 5px;
+    color: #bfbfbf;
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+
+  .modal-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  .c {
+    background-color: transparent;
+    border-color: #380ac2;
+    color: #f7f2f2;
+    border-style: solid;
+    border-width: 2px;
+  }
+
+  .submit-btn {
+    background-color: #6c47ff;
+    color: white;
+  }
+
+  .submit-btn:hover {
+    background-color: #5635d0;
+  }
+
+  .close-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  /* Resize Button Styling */
+  .resize-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 1001;
+  }
+
+  .resize-btn:hover {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  @media (max-width: 500px) {
+    .rating-scale {
+      gap: 6px;
+    }
+  }
