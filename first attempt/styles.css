@@ -262,6 +262,33 @@
     background: rgba(255, 255, 255, 1);
   }
 
+  /* ------------------ Zoom Button Styles ------------------ */
+  .zoom-btn {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 1002;
+  }
+
+  .zoom-btn:hover {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  /* ------------------ Zoom Effect on Overlay ------------------ */
+  .modal-overlay.zoomed {
+    transform: scale(1.1);
+  }
+
   @media (max-width: 500px) {
     .rating-scale {
       gap: 6px;

@@ -15,20 +15,6 @@ const smallIcon = `<svg width="24" height="24" viewBox="0 0 24 24">
   <path fill="currentColor" d="M8,8 L16,8 L16,16 L8,16 Z"/>
 </svg>`;
 
-// Define Zoom Icons (using inline SVG)
-const zoomInIcon = `<svg width="24" height="24" viewBox="0 0 24 24">
-  <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
-  <line x1="10" y1="7" x2="10" y2="13" stroke="currentColor" stroke-width="2"/>
-  <line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="2"/>
-</svg>`;
-
-const zoomOutIcon = `<svg width="24" height="24" viewBox="0 0 24 24">
-  <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
-  <line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="2"/>
-</svg>`;
-
-let zoomed = false;
-
 // Modal state can be "normal", "fullscreen", or "small"
 let modalState = "normal";
 
@@ -53,23 +39,6 @@ function toggleResize() {
     modalState = "normal";
     resizeBtn.title = "Toggle fullscreen";
     resizeBtn.innerHTML = normalIcon;
-  }
-}
-
-function toggleZoom() {
-  const overlay = document.getElementById('modalOverlay');
-  const zoomBtn = document.getElementById('zoomBtn');
-  
-  if (!zoomed) {
-    overlay.classList.add('zoomed');
-    zoomBtn.title = "Zoom out";
-    zoomBtn.innerHTML = zoomOutIcon;
-    zoomed = true;
-  } else {
-    overlay.classList.remove('zoomed');
-    zoomBtn.title = "Zoom in";
-    zoomBtn.innerHTML = zoomInIcon;
-    zoomed = false;
   }
 }
 
@@ -120,5 +89,4 @@ function submitFeedback() {
 // Set up the resize button event listener when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('resizeBtn').addEventListener('click', toggleResize);
-  document.getElementById('zoomBtn').addEventListener('click', toggleZoom);
 });
